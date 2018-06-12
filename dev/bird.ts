@@ -56,14 +56,12 @@ class Bird
     {
         this.x = window.innerWidth
         this.y = 0.3 * window.innerHeight + 0.5 * window.innerHeight * Math.random()
-        this._speed = 3 + Math.random() * 7
     }
 
     private startLeft() 
     {
         this.x = 0 - this.htmlElement.getBoundingClientRect().width
         this.y = 0.3 * window.innerHeight + 0.5 * window.innerHeight * Math.random()
-        this._speed = -3 - Math.random() * 7
     }
 
     public birdsClicked() {
