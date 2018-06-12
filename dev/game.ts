@@ -1,54 +1,112 @@
-class Game {
+class Game 
+{
+    private disk:Disk[] = []
+    private bird:Bird[] = []
 
-    private disk:Disk;
-    private bird:Bird;
+    public disks:number = 1
+    private birds:number = 3
+    private ufo:Ufo
 
-    private scoreDisplay:HTMLElement;
-    private score:number = 0;
+    private scoreDisplay:HTMLElement
+    public score:number = 0
+
+    private lifeDisplay:HTMLElement
+    public life:number = 25
 
 
-    constructor(){
+    constructor()
+    {
         console.log("game started - time to win")
 
-        this.scoreDisplay = document.createElement("score");
-        document.body.appendChild(this.scoreDisplay);
+        this.scoreDisplay = document.createElement("score")
+        document.body.appendChild(this.scoreDisplay)
 
-        this.disk = new NormalDisk(this);
+        this.lifeDisplay = document.createElement("lives")
+        document.body.appendChild(this.lifeDisplay)
 
-        this.bird = new BirdRight(this);
+        for (var i = 0; i < this.birds; i++) {
+            if (Math.random() < 0.5)
+            {
+                this.bird.push(new BirdRight(this))
+            }            
+            else
+            {
+                this.bird.push(new BirdLeft(this))
+            }
+        }
 
-        this.updateScore(0);
+        for (var i = 0; i < this.disks; i++) {
+            this.disk.push(new NormalDisk(this))
+        }
 
-        this.update();
+        this.updateScore(0)
+        
+        this.updateLives(0)
+
+        this.update()
     }
 
-    public newDisk() {
+    public newDisk() 
+    {
         // 10% kans op een disk die je niet moet klikken
-        if (Math.random() < 0.10) {
-            this.disk = new DangerDisk(this);
-        } else {
-            this.disk = new NormalDisk(this);
+        if (Math.random() < 0.15) {
+            this.disk.push(new DangerDisk(this))
+        } 
+        else 
+        {
+            this.disk.push(new NormalDisk(this))
+            
+            if (Math.random() < 0.03) 
+            {
+                this.ufo = new Ufo(this)
+            }
         }
     }
 
-    public newBird() {
-        if (Math.random() < 0.50) {
-            this.bird = new BirdRight(this);
-        } else {
-            this.bird = new BirdLeft(this);
+    public newBird() 
+    {
+        if (Math.random() < 0.50) 
+        {
+            this.bird.push(new BirdLeft(this))
+        } 
+        else 
+        {
+            this.bird.push(new BirdRight(this))
         }
     }
+    
 
-    public update() {
-        this.disk.update();
-        this.bird.update();
+    public update() 
+    {
+        for (var b of this.bird) 
+        {
+            b.update()
+        }
 
+        for (var d of this.disk) 
+        {
+            d.update()
+        }
+
+        if (this.ufo)
+        {
+            this.ufo.update()
+        }
+
+        
         requestAnimationFrame( () => this.update() )
     }
 
-    public updateScore(points:number) {
-        this.score = this.score + points;
-        this.scoreDisplay.innerHTML = "Score: " + this.score;
+    public updateScore(points:number) 
+    {
+        this.score = this.score + points
+        this.scoreDisplay.innerHTML = "Score: " + this.score
+    }
+
+    public updateLives(lives:number)
+    {
+        this.life = this.life + lives
+        this.lifeDisplay.innerHTML = "Lives: " + this.life
     }
 }
 

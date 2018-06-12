@@ -1,11 +1,12 @@
 ///<reference path="bird.ts"/>
 // flying sheep with disk properties, but clicking it is bad
 
-class BirdRight extends Bird {
-    constructor(g:Game) {
+class BirdRight extends Bird 
+{
+    constructor(g:Game) 
+    {
+        super(g, "bird-right")
 
-        super(g, "bird-right");
-
-        this._speed = 3;
+        this._speed = 3 + Math.random() * 7
     }
 }

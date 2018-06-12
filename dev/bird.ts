@@ -1,66 +1,70 @@
-class Bird {
+class Bird 
+{
+    protected _speed:number
 
-    protected _speed:number;
-    private x:number = 0;
-    private y:number = 0;
+    private x:number = window.innerWidth
+    private y:number = 0.3 * window.innerHeight + 0.6 * window.innerHeight * Math.random()
 
-    private posX:number = window.innerWidth / 2;
-    private posY:number = window.innerHeight;
-
+    private deadBird:number = 0
 
     protected htmlElement:HTMLElement;
 
-    private game:Game;
+    private game:Game
 
-    public constructor(g:Game, tag:string) {
 
+    public constructor(g:Game, tag:string) 
+    {
         this.game = g;
 
-        this.htmlElement = document.createElement(tag);
-        document.body.appendChild(this.htmlElement);
+        this.htmlElement = document.createElement(tag)
+        document.body.appendChild(this.htmlElement)
 
-        this.htmlElement.style.left = `${this.posX}px`;
-        this.htmlElement.style.top = `${this.posY}px`;
+        this.htmlElement.addEventListener("click", () => this.kill())
     }
 
-    public kill() {
-        this.htmlElement.remove();
+    public kill() 
+    {
+        this.htmlElement.remove()
 
-        this.game.updateScore(this._speed * -100);
+        this.game.updateScore(-250)
 
-        this.update();
+        this.birdsClicked()
 
-        this.game.newBird();
+        for (let i = -1; i <= this.deadBird; i++)
+        {
+            this.game.newBird()
+        }
     }
 
     public update() {
         this.x += this._speed;
 
-        if(this.x > window.innerWidth || this.x < - this.htmlElement.getBoundingClientRect().width) {
-            this.startOpposite();
-        }
+        if(this.x > window.innerWidth) 
+        {
+            this.startLeft()
+        } 
+        if (this.x < 0 - this.htmlElement.getBoundingClientRect().width)
+        {
+            this.startRight()
+        } 
 
-        // if(this.x < window.innerWidth) {
-        //     this.startOpposite(1);
-        // }
-        
-        this.htmlElement.addEventListener("click", () => this.kill());
-
-        this.htmlElement.style.left = `${this.x}px`;
-        this.htmlElement.style.top = `${this.y}px`;
+        this.htmlElement.style.left = `${this.x}px`
+        this.htmlElement.style.top = `${this.y}px`
     }
 
-    private startOpposite() {
+    private startRight() 
+    {
+        this.x = window.innerWidth
+        this.y = 0.3 * window.innerHeight + 0.5 * window.innerHeight * Math.random()
+    }
 
-        // switch(c) {
-        //     case 0:
-                this.x = this.htmlElement.getBoundingClientRect().width * -1;
-                this.y = (100 + Math.random() * (window.innerHeight - 300 - this.htmlElement.getBoundingClientRect().height));
-                // break;
-            // case 1:
-            //     this.x = this.htmlElement.getBoundingClientRect().width * -1;
-            //     this.y = (100 + Math.random() * (window.innerHeight - 300 - this.htmlElement.getBoundingClientRect().height));
-            //     break;
-        // }      
+    private startLeft() 
+    {
+        this.x = 0 - this.htmlElement.getBoundingClientRect().width
+        this.y = 0.3 * window.innerHeight + 0.5 * window.innerHeight * Math.random()
+    }
+
+    public birdsClicked() {
+        this.deadBird + 1
     }
 }
