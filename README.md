@@ -1,6 +1,8 @@
 # Typescript project 'maak een game' - programmeren 4
 Dit is een project voor de oefeningen in CMTTHE01-4. Voor dit project heb ik een game gemaakt met: classes, inherritance, composition en encapsulation.
 
+https://0882916.github.io/DiskScape/
+
 ## Het project - DiskScape
 De game bestaat uit:
 
