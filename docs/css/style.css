@@ -112,6 +112,20 @@ score {
     z-index: 4;
 }
 
+endscore {
+    position: absolute;
+    font-size: 2em;
+    line-height: 1.2em;
+    color:black;
+    margin: auto;
+    position: absolute;
+    text-align: center;
+    height: 50px;
+    width: 300px;
+    margin-top:calc(calc(50vh + 75px) - 25px);
+    margin-left:calc(50vw - 150px);
+}
+
 lives {
     margin:10px;
     width:100%; height:100px;
@@ -122,4 +136,38 @@ lives {
     color:black;
     text-align: right;
     z-index: 4;
+}
+
+cleardisks {
+    margin:10px 10px 10px calc(40% - 100px);
+    width:180px; height:40px;
+    cursor: pointer;
+    position: absolute;
+    left:0px;
+    font-size: 1em;
+    line-height: 1.2em;
+    color:black;
+    text-align: right;
+    z-index: 4;
+}
+
+clearbirds {
+    margin:10px 10px 10px calc(55% - 100px);
+    width:176px; height:40px;
+    cursor: pointer;
+    position: absolute;
+    left:0px;
+    font-size: 1em;
+    line-height: 1.2em;
+    color:black;
+    z-index: 4;
+}
+
+cleardisks:hover {
+    font-size: 1.1em;
+    border: 1px solid red;
+}
+clearbirds:hover {
+    font-size: 1.1em;
+    border: 1px solid red;
 }

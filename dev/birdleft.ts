@@ -1,12 +1,14 @@
 ///<reference path="bird.ts"/>
-// flying sheep with disk properties, but clicking it is bad
 
+
+// child of bird class
 class BirdLeft extends Bird 
 {
     constructor(g:PlayScreen) 
     {
         super(g, "bird-left")
 
-        this._speed = -3 - Math.random() * 5
+        // negative speed between -3 and -8
+        this._speed = -3.0 - Math.random() * 5.0
     }
 }
