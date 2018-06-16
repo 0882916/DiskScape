@@ -15,6 +15,8 @@ class Ufo
     private x:number = window.innerWidth
     private y:number = window.innerHeight
 
+
+
     // amount of tries player gets to hit the ufo
     private tries:number = 3
 
@@ -51,19 +53,29 @@ class Ufo
         this.y += this.amplitude
         // make ufo move horizontally
         this.x += this._speed
-        
+
         // when ufo goes past the window width right
         if (this.x > window.innerWidth) 
         {
-            // start right
-            this.startRight()
+            if (Math.random() < 0.5) {
+                // start right
+                this.startRight()
+            } else {
+                // start left
+                this.startLeft()
+            }
         } 
 
         // when ufo goes past windowwidth left 
         if (this.x < 0 - this.htmlElement.getBoundingClientRect().width)
         {
-            // start left
-             this.startLeft()
+            if (Math.random() < 0.5) {
+                // start right
+                this.startRight()
+            } else {
+                // start left
+                this.startLeft()
+            }
         }
 
         // when ufo goes past 20% of window height 
