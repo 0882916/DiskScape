@@ -1,7 +1,6 @@
 class Disk 
 {
     private game:PlayScreen
-    private sound:Sound
     protected htmlElement:HTMLElement
     
     protected _speed:number
@@ -35,8 +34,6 @@ class Disk
         {
             this.game.updateScore(-25)
         }
-
-        this.sound.playGunShot();
         this.htmlElement.remove()
         this.game.removeDisk(this)
         this.game.newDisk()
@@ -44,7 +41,6 @@ class Disk
 
     public targetDisk2X() 
     {
-        this.sound.playX2();
         this.htmlElement.remove()
         this.game.removeDisk(this)
         this.disk2XClicked()
@@ -67,7 +63,6 @@ class Disk
 
     public respawn()
     {
-        this.sound.playLoseLife();
         this._speed = 5 + Math.random() * 3
         this.x = (0.1 * window.innerWidth) + ((0.8 * Math.random() * window.innerWidth) - this.htmlElement.getBoundingClientRect().width)
         this.game.updateScore(-100)
