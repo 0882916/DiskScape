@@ -1,7 +1,6 @@
 class Bird 
 {
     private game:PlayScreen
-    private sound:Sound
 
     protected _speed:number
 
@@ -29,8 +28,6 @@ class Bird
         this.game.updateScore(-250)
 
         this.birdsClicked()
-
-        this.sound.playSeaGull();
 
         for (let i = -1; i <= this.deadBird; i++)
         {
