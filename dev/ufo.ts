@@ -18,7 +18,7 @@ class Ufo
 
 
     // amount of tries player gets to hit the ufo
-    private tries:number = 3
+    private tries:number = 2
 
 
     // constructor with class playscreen
@@ -93,7 +93,7 @@ class Ufo
         }
 
         // when tries goes below 1
-        if (this.tries == 0)
+        if (this.tries < 0)
         {
             // remove ufo from game
             this.htmlElement.remove()
