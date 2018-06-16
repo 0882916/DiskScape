@@ -3,10 +3,10 @@
 
 class BirdRight extends Bird 
 {
-    constructor(g:Game) 
+    constructor(g:PlayScreen) 
     {
         super(g, "bird-right")
 
-        this._speed = 3 + Math.random() * 7
+        this._speed = 3 + Math.random() * 5
     }
 }

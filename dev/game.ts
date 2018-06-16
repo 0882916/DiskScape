@@ -1,112 +1,30 @@
+/// <reference path="playscreen.ts"/>
+
 class Game 
 {
-    private disk:Disk[] = []
-    private bird:Bird[] = []
+    private currentScreen:any
 
-    public disks:number = 1
-    private birds:number = 3
-    private ufo:Ufo
-
-    private scoreDisplay:HTMLElement
-    public score:number = 0
-
-    private lifeDisplay:HTMLElement
-    public life:number = 25
-
-
-    constructor()
+    constructor() 
     {
-        console.log("game started - time to win")
-
-        this.scoreDisplay = document.createElement("score")
-        document.body.appendChild(this.scoreDisplay)
-
-        this.lifeDisplay = document.createElement("lives")
-        document.body.appendChild(this.lifeDisplay)
-
-        for (var i = 0; i < this.birds; i++) {
-            if (Math.random() < 0.5)
-            {
-                this.bird.push(new BirdRight(this))
-            }            
-            else
-            {
-                this.bird.push(new BirdLeft(this))
-            }
-        }
-
-        for (var i = 0; i < this.disks; i++) {
-            this.disk.push(new NormalDisk(this))
-        }
-
-        this.updateScore(0)
-        
-        this.updateLives(0)
-
-        this.update()
+        this.currentScreen = new StartScreen(this)
+        this.gameLoop()
     }
 
-    public newDisk() 
+    private gameLoop():void
     {
-        // 10% kans op een disk die je niet moet klikken
-        if (Math.random() < 0.15) {
-            this.disk.push(new DangerDisk(this))
-        } 
-        else 
-        {
-            this.disk.push(new NormalDisk(this))
-            
-            if (Math.random() < 0.03) 
-            {
-                this.ufo = new Ufo(this)
-            }
-        }
+        this.currentScreen.update()
     }
 
-    public newBird() 
+    public showPlayScreen():void
     {
-        if (Math.random() < 0.50) 
-        {
-            this.bird.push(new BirdLeft(this))
-        } 
-        else 
-        {
-            this.bird.push(new BirdRight(this))
-        }
-    }
-    
-
-    public update() 
-    {
-        for (var b of this.bird) 
-        {
-            b.update()
-        }
-
-        for (var d of this.disk) 
-        {
-            d.update()
-        }
-
-        if (this.ufo)
-        {
-            this.ufo.update()
-        }
-
-        
-        requestAnimationFrame( () => this.update() )
+        document.body.innerHTML = ''
+        this.currentScreen = new PlayScreen(this)
     }
 
-    public updateScore(points:number) 
+    public showGameOverScreen():void 
     {
-        this.score = this.score + points
-        this.scoreDisplay.innerHTML = "Score: " + this.score
-    }
-
-    public updateLives(lives:number)
-    {
-        this.life = this.life + lives
-        this.lifeDisplay.innerHTML = "Lives: " + this.life
+        document.body.innerHTML = ''
+        this.currentScreen = new GameOver(this)
     }
 }
 

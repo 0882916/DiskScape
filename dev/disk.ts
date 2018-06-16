@@ -1,5 +1,9 @@
 class Disk 
 {
+    private game:PlayScreen
+    private sound:Sound
+    protected htmlElement:HTMLElement
+    
     protected _speed:number
 
     private x:number = 0.2 * window.innerWidth + 0.6 * Math.random() * window.innerWidth
@@ -8,14 +12,9 @@ class Disk
     private posX:number = window.innerWidth / 2
     private posY:number = window.innerHeight
 
-    private deadSheep:number = 0
+    public disk2x:number = 1
     
-    protected htmlElement:HTMLElement
-
-    private game:Game
-
-    
-    public constructor(g:Game, tag:string)
+    public constructor(g:PlayScreen, tag:string)
     {
         this.game = g
 
@@ -34,38 +33,41 @@ class Disk
         }
         else
         {
-            this.game.updateScore(-50)
+            this.game.updateScore(-25)
         }
 
+        this.sound.playGunShot();
         this.htmlElement.remove()
-
+        this.game.removeDisk(this)
         this.game.newDisk()
     }
 
-    public targetSheep() 
+    public targetDisk2X() 
     {
+        this.sound.playX2();
         this.htmlElement.remove()
+        this.game.removeDisk(this)
+        this.disk2XClicked()
 
-        this.sheepClicked()
-
-        for (let i = -1; i <= this.deadSheep; i++)
+        for (let i = 0; i <= this.disk2x; i++)
         {
             this.game.newDisk()
         }
     }
 
-    public sheepClicked() {
-        this.deadSheep + 1
-        this.game.updateScore(500 + 500 * this.deadSheep)
+    public disk2XClicked() {
+        this.disk2x + 1
+        this.game.updateScore(1250)
     }
 
     public gravity() 
     {
-        this._speed = -4
+        this._speed = -2.5
     }
 
     public respawn()
     {
+        this.sound.playLoseLife();
         this._speed = 5 + Math.random() * 3
         this.x = (0.1 * window.innerWidth) + ((0.8 * Math.random() * window.innerWidth) - this.htmlElement.getBoundingClientRect().width)
         this.game.updateScore(-100)
@@ -81,7 +83,7 @@ class Disk
             this.gravity()
         }
 
-        if (this.y > window.innerHeight + this.htmlElement.getBoundingClientRect().height) 
+        if (this.y > window.innerHeight + this.htmlElement.getBoundingClientRect().height + 50) 
         {
             this.respawn()
         }

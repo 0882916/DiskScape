@@ -1,5 +1,8 @@
 class Bird 
 {
+    private game:PlayScreen
+    private sound:Sound
+
     protected _speed:number
 
     private x:number = window.innerWidth
@@ -9,10 +12,7 @@ class Bird
 
     protected htmlElement:HTMLElement;
 
-    private game:Game
-
-
-    public constructor(g:Game, tag:string) 
+    public constructor(g:PlayScreen, tag:string) 
     {
         this.game = g;
 
@@ -29,6 +29,8 @@ class Bird
         this.game.updateScore(-250)
 
         this.birdsClicked()
+
+        this.sound.playSeaGull();
 
         for (let i = -1; i <= this.deadBird; i++)
         {
@@ -65,6 +67,6 @@ class Bird
     }
 
     public birdsClicked() {
-        this.deadBird + 1
+        this.deadBird += 1
     }
 }
