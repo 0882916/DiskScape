@@ -121,7 +121,7 @@ class BirdRight extends Bird
 
 
 ## Klassen diagram
-![diagram](https://preview.ibb.co/eZ43a.jpgJ
+![diagram](https://preview.ibb.co/eZ43a.jpg)
 
 
 ## Peer review
