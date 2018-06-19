@@ -3,7 +3,7 @@
 ## Typescript project 'maak een game' - programmeren 4
 Dit is een project voor de oefeningen in CMTTHE01-4. Voor dit project heb ik een game gemaakt met: classes, inherritance, composition en encapsulation.
 
-Speel DiskScape via de volgende link:
+### Speel DiskScape via de volgende link:
 [DiskScape](https://0882916.github.io/DiskScape/)
 
 ## De spelregels
@@ -121,7 +121,7 @@ class BirdRight extends Bird
 
 
 ## Klassen diagram
-![diagram](https://imgur.com/a/MOWc8Hy.png)
+![diagram](https://imgur.com/a/MOWc8Hy.jpg)
 
 
 ## Peer review
