@@ -139,7 +139,7 @@ lives {
 }
 
 cleardisks {
-    margin:10px 10px 10px calc(40% - 100px);
+    margin:10px 10px 10px calc(50% - 185px);
     width:180px; height:40px;
     cursor: pointer;
     position: absolute;
@@ -152,7 +152,7 @@ cleardisks {
 }
 
 clearbirds {
-    margin:10px 10px 10px calc(55% - 100px);
+    margin:10px 10px 10px calc(50% + 5px);
     width:176px; height:40px;
     cursor: pointer;
     position: absolute;
