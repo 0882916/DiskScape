@@ -29,6 +29,9 @@ var Bird = (function () {
             this.game.newBird();
         }
     };
+    Bird.prototype.delete = function () {
+        this.htmlElement.remove();
+    };
     Bird.prototype.update = function () {
         this.x += this._speed;
         if (this.x > window.innerWidth) {
@@ -123,6 +126,9 @@ var Disk = (function () {
         this.disk2x + 1;
         this.game.updateScore(1250);
     };
+    Disk.prototype.delete = function () {
+        this.htmlElement.remove();
+    };
     return Disk;
 }());
 var PlayScreen = (function () {
@@ -185,11 +191,11 @@ var PlayScreen = (function () {
     };
     PlayScreen.prototype.updateScore = function (points) {
         this.game.score = this.game.score + points;
-        this.scoreDisplay.innerHTML = "SCORE: " + this.game.score;
+        this.scoreDisplay.innerHTML = "SCORE:" + this.game.score;
     };
     PlayScreen.prototype.updateLives = function (lives) {
         this.life = this.life + lives;
-        this.lifeDisplay.innerHTML = "LIVES: " + this.life;
+        this.lifeDisplay.innerHTML = "LIVES:" + this.life;
     };
     PlayScreen.prototype.gameOver = function () {
         this.game.showGameOverScreen();
@@ -227,19 +233,31 @@ var PlayScreen = (function () {
     };
     PlayScreen.prototype.resetDiskCount = function () {
         if (this.game.score >= 25000) {
-            this.updateScore(0);
+            this.updateScore(-25000);
+            for (var _i = 0, _a = this.disk; _i < _a.length; _i++) {
+                var d = _a[_i];
+                d.delete();
+            }
+            this.disk = [];
+            this.disk.push(new NormalDisk(this));
         }
     };
     PlayScreen.prototype.resetBirdCount = function () {
         if (this.game.score >= 10000) {
-            this.updateScore(0);
+            this.updateScore(-10000);
+            for (var _i = 0, _a = this.bird; _i < _a.length; _i++) {
+                var b = _a[_i];
+                b.delete();
+            }
+            this.bird = [];
+            this.bird.push(new BirdLeft(this));
         }
     };
     return PlayScreen;
 }());
 var Game = (function () {
     function Game() {
-        this.score = 25000;
+        this.score = 0;
         this.currentScreen = new StartScreen(this);
     }
     Game.prototype.showPlayScreen = function () {
@@ -311,7 +329,7 @@ var Ufo = (function () {
         this.amplitude = 2;
         this.x = window.innerWidth;
         this.y = window.innerHeight;
-        this.tries = 3;
+        this.tries = 2;
         this.game = g;
         this.htmlElement = document.createElement('ufo');
         document.body.appendChild(this.htmlElement);
@@ -326,10 +344,20 @@ var Ufo = (function () {
         this.y += this.amplitude;
         this.x += this._speed;
         if (this.x > window.innerWidth) {
-            this.startRight();
+            if (Math.random() < 0.5) {
+                this.startRight();
+            }
+            else {
+                this.startLeft();
+            }
         }
         if (this.x < 0 - this.htmlElement.getBoundingClientRect().width) {
-            this.startLeft();
+            if (Math.random() < 0.5) {
+                this.startRight();
+            }
+            else {
+                this.startLeft();
+            }
         }
         if (this.y > window.innerHeight * 0.2) {
             this.amplitude = -2;
@@ -337,7 +365,7 @@ var Ufo = (function () {
         if (this.y < window.innerHeight * 0.1) {
             this.amplitude = 2;
         }
-        if (this.tries == 0) {
+        if (this.tries < 0) {
             this.htmlElement.remove();
         }
         this.htmlElement.style.left = this.x + "px";
