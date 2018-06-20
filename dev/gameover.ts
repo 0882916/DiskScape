@@ -2,9 +2,6 @@ class GameOver
 {
     private div: HTMLElement
     private game: Game
-
-    private playscreen: PlayScreen
-
     
     constructor(g: Game) 
     {

@@ -130,5 +130,9 @@ class Disk
         // give updateScore ( 1250 )
         this.game.updateScore(1250)
     }
+
+    public delete(){
+        this.htmlElement.remove()
+    }
 }
 

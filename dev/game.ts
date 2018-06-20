@@ -2,9 +2,9 @@
 
 class Game 
 {
-    private currentScreen:any
+    public currentScreen:any
 
-    public score: number = 25000
+    public score: number = 0
 
     constructor() 
     {

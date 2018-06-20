@@ -137,7 +137,7 @@ class PlayScreen
         this.game.score = this.game.score + points
 
         // add number of score to html element
-        this.scoreDisplay.innerHTML = "SCORE: " + this.game.score
+        this.scoreDisplay.innerHTML = "SCORE:" + this.game.score
     }
 
 
@@ -148,7 +148,7 @@ class PlayScreen
         this.life = this.life + lives
 
         // add number of life to html element
-        this.lifeDisplay.innerHTML = "LIVES: " + this.life
+        this.lifeDisplay.innerHTML = "LIVES:" + this.life
     }
 
 
@@ -228,9 +228,16 @@ class PlayScreen
     public resetDiskCount() {
         if (this.game.score >= 25000)
         {
-            this.updateScore(0)
+            this.updateScore(-25000)
 
-            // this.disk.splice(Array.length, this.disk.length)
+            for (let d of this.disk) 
+            {
+                d.delete()
+            }
+
+            this.disk = []
+            this.disk.push(new NormalDisk(this))
+
         }
     }
 
@@ -238,9 +245,14 @@ class PlayScreen
     public resetBirdCount() {
         if (this.game.score >= 10000)
         {
-            this.updateScore(0)
-
-            // this.bird.splice(Array.length, this.bird.length)
+            this.updateScore(-10000)
+            for (let b of this.bird)
+            {
+                b.delete()
+            }
+            
+            this.bird = []
+            this.bird.push(new BirdLeft(this))
         }
     }
 }

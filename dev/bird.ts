@@ -53,6 +53,10 @@ class Bird
         }
     }
 
+    public delete(){
+        this.htmlElement.remove()
+    }
+
 
     public update() {
         // make bird move horizontally
