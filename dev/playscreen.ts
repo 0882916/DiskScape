@@ -161,13 +161,13 @@ class PlayScreen
 
     public newDisk() 
     {
-        // when newDisk() is triggered, add 10% chance to create a special disk
-        if (Math.random() < 0.10) 
+        // when newDisk() is triggered, add 7.5% chance to create a special disk
+        if (Math.random() < 0.075) 
         {
             this.disk.push(new SpecialDisk(this))
         } 
 
-        // add normal disk other 90% of the time
+        // add normal disk other 92.5% of the time
         else 
         {
             this.disk.push(new NormalDisk(this))

@@ -201,7 +201,7 @@ var PlayScreen = (function () {
         this.game.showGameOverScreen();
     };
     PlayScreen.prototype.newDisk = function () {
-        if (Math.random() < 0.10) {
+        if (Math.random() < 0.075) {
             this.disk.push(new SpecialDisk(this));
         }
         else {
