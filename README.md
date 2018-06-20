@@ -130,30 +130,30 @@ class BirdRight extends Bird
 ## Peer review
 Abel Beekink - AeroPoint
 
-• De code van het individuele project staat op GitHub. **check**
-• De game is online speelbaar. **missing**
-• De game bevat minimaal één van de onderstaande extra uitdagingen. **check**
-• De game heeft een startscherm en een eindscherm. **check**
-• Er zijn geen bugs. **check**
-• Het project maakt gebruik van deze OOP principes.
-• Classes **check**
-• Encapsulation **check**
-• Composition **check**
-• Inheritance **check**
-• De GitHub pagina bevat een ReadMe bestand. Dit bestand bevat:
-• Per bovengenoemd OOP principe een uitleg: waar is het toegepast, en waarom is het
+- De code van het individuele project staat op GitHub. **check**
+- De game is online speelbaar. **missing**
+- De game bevat minimaal één van de onderstaande extra uitdagingen. **check**
+- De game heeft een startscherm en een eindscherm. **check**
+- Er zijn geen bugs. **check**
+- Het project maakt gebruik van deze OOP principes.
+- Classes **check**
+- Encapsulation **check**
+- Composition **check**
+- Inheritance **check**
+- De GitHub pagina bevat een ReadMe bestand. Dit bestand bevat:
+- Per bovengenoemd OOP principe een uitleg: waar is het toegepast, en waarom is het
 op die plek toegepast. De uitleg is inclusief code voorbeelden. **missing**
-• Een klassendiagram van de game. **missing**
-• Een link naar de peer review die in week 6 is gedaan. **missing**
+- Een klassendiagram van de game. **missing**
+- Een link naar de peer review die in week 6 is gedaan. **missing**
 
 Extra uitdagingen
-• De game ziet er zeer verzorgd uit dankzij goed uitgewerkt UI design en artwork. **check**
-• De game bevat een hiscore lijst. Scores worden bewaard nadat de game is afgesloten. **missing**
-• De game werkt met Canvas in plaats van DOM elementen **missing**
-• De game bevat local of online multiplayer. **missing**
-• De game werkt op mobiele schermen en ondersteunt touchscreen controls. **missing**
-• De game maakt gebruik van device api's zoals de camera, microfoon, gyroscoop of GPS. **missing**
-• De game gebruikt een externe library uit de lijst in deze modulewijzer. **check**
+- De game ziet er zeer verzorgd uit dankzij goed uitgewerkt UI design en artwork. **check**
+- De game bevat een hiscore lijst. Scores worden bewaard nadat de game is afgesloten. **missing**
+- De game werkt met Canvas in plaats van DOM elementen **missing**
+- De game bevat local of online multiplayer. **missing**
+- De game werkt op mobiele schermen en ondersteunt touchscreen controls. **missing**
+- De game maakt gebruik van device api's zoals de camera, microfoon, gyroscoop of GPS. **missing**
+- De game gebruikt een externe library uit de lijst in deze modulewijzer. **check**
 
 Feedback:
 Het idee is erg leuk, en de code ziet er best advanced uit. Persoonlijk vind ik het mooi uitgewerkt, goede classes en benaming van variablen; erg overzichtelijk. Wat ik in de gameplay zelf wat minder vind is dat het doordat holle bullets alleen puntige bullets kunnen raken en vice versa het best beperkt wordt wat je kunt aanrichten in het spel. Het lijkt vrij snel dat je niet meer dan een of twee blokken kunt aanklikken die echt iets doen - het had iets uitdagender kunnen zijn. Iets dat misschien wat veel moeite had geweest, maar een hele koele uitbreiding zou zijn is dat de combo doorgaat op blokken die gevallen zijn nadat geklikt wordt, zodat de combo nog groter wordt. Maar erg leuk idee en heel goed uitgewerkt
