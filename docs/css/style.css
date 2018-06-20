@@ -149,6 +149,8 @@ cleardisks {
     color:black;
     text-align: right;
     z-index: 4;
+    background-color: lightblue;
+    opacity: 0.6;
 }
 
 clearbirds {
@@ -161,13 +163,15 @@ clearbirds {
     line-height: 1.2em;
     color:black;
     z-index: 4;
+    background-color: lightblue;
+    opacity: 0.6;
 }
 
 cleardisks:hover {
     font-size: 1.1em;
-    border: 1px solid red;
+    opacity: 1.0
 }
 clearbirds:hover {
     font-size: 1.1em;
-    border: 1px solid red;
+    opacity: 1.0;
 }
